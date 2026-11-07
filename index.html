@@ -42,6 +42,9 @@ h2 .pino{width:8px;height:8px;border-radius:50%;background:var(--acento)}
 .item .seta{color:var(--acento);font-weight:700}
 .vazio{background:var(--card);border:1px dashed rgba(255,201,60,.5);border-radius:18px;padding:26px 18px;text-align:center;color:var(--suave);margin-bottom:28px}
 .vazio strong{display:block;color:var(--texto);font-family:'Fredoka',sans-serif;font-size:18px;margin-bottom:6px}
+.ph{display:grid;place-items:center;background:var(--card2);font-size:40px}
+.destaque .ph{width:100%;aspect-ratio:16/7;font-size:56px}
+.item .ph{width:64px;height:64px;border-radius:10px;flex-shrink:0;font-size:28px}
 .aviso{font-size:12px;color:var(--suave);text-align:center;line-height:1.5;border-top:1px solid var(--linha);padding-top:16px}
 </style>
 </head>
@@ -71,17 +74,18 @@ h2 .pino{width:8px;height:8px;border-radius:50%;background:var(--acento)}
   var alvo = document.getElementById('produtos');
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
   function preco(p){var n=Number(p);return isFinite(n)&&n>0?'R$ '+n.toFixed(2).replace('.',','):'';}
+  function foto(p,alt){return p.imagem?'<img src="'+esc(p.imagem)+'" alt="'+(alt?esc(p.nome):'')+'" loading="lazy">':'<div class="ph" aria-hidden="true">🛍️</div>';}
   function vazio(){alvo.innerHTML='<div class="vazio"><strong>Produtos dos vídeos chegando em breve</strong>Aqui vão aparecer os produtos ligados às curiosidades de cada dia.</div>';}
   fetch('produtos.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
     var lista=(d&&d.produtos)||[];
     if(!lista.length){vazio();return;}
     var h=lista[0], html='';
     html+='<h2><span class="pino"></span>Produto do vídeo de hoje</h2>';
-    html+='<a class="destaque" href="'+esc(h.link)+'" target="_blank" rel="noopener sponsored"><img src="'+esc(h.imagem)+'" alt="'+esc(h.nome)+'" loading="lazy"><div class="info"><div class="video">'+esc(h.video)+'</div><div class="nome">'+esc(h.nome)+'</div><div class="linha"><span class="preco">'+preco(h.preco)+'</span><span class="botao">Ver na Shopee</span></div></div></a>';
+    html+='<a class="destaque" href="'+esc(h.link)+'" target="_blank" rel="noopener sponsored">'+foto(h,true)+'<div class="info"><div class="video">'+esc(h.video)+'</div><div class="nome">'+esc(h.nome)+'</div><div class="linha"><span class="preco">'+preco(h.preco)+'</span><span class="botao">Ver na Shopee</span></div></div></a>';
     if(lista.length>1){
       html+='<h2><span class="pino"></span>Produtos dos vídeos anteriores</h2><div class="lista">';
       lista.slice(1,30).forEach(function(p){
-        html+='<a class="item" href="'+esc(p.link)+'" target="_blank" rel="noopener sponsored"><img src="'+esc(p.imagem)+'" alt="" loading="lazy"><div class="t"><div class="video">'+esc(p.video)+'</div><div class="nome">'+esc(p.nome)+'</div><div class="preco">'+preco(p.preco)+'</div></div><span class="seta">›</span></a>';
+        html+='<a class="item" href="'+esc(p.link)+'" target="_blank" rel="noopener sponsored">'+foto(p,false)+'<div class="t"><div class="video">'+esc(p.video)+'</div><div class="nome">'+esc(p.nome)+'</div><div class="preco">'+preco(p.preco)+'</div></div><span class="seta">›</span></a>';
       });
       html+='</div>';
     }
