@@ -1,1 +1,33 @@
-{ "atualizado": "", "produtos": [] }
+{
+ "atualizado": "2026-11-07T12:07:45.220-03:00",
+ "produtos": [
+  {
+   "video": "85 litros por segundo: o poder dos pneus de chuva",
+   "nome": "Miniatura de Fórmula 1 em metal 1:43",
+   "preco": 17.63,
+   "imagem": "",
+   "link": "https://s.shopee.com.br/6AmPEvOWhc"
+  },
+  {
+   "video": "O motivo científico pelo qual o tempo voa na vida adulta",
+   "nome": "Ampulheta decorativa de vidro (5 minutos)",
+   "preco": 29.99,
+   "imagem": "",
+   "link": "https://s.shopee.com.br/2Vt6s8zhCp"
+  },
+  {
+   "video": "Nuvens que parecem ondas gigantes: o fenômeno Kelvin-Helmholtz",
+   "nome": "Projetor de céu estrelado astronauta",
+   "preco": 35.99,
+   "imagem": "",
+   "link": "https://s.shopee.com.br/5q9YqDs8YM"
+  },
+  {
+   "video": "Como os jogos mudaram de cartuchos para mundos em 4K?",
+   "nome": "Mini game retrô portátil com 400 jogos",
+   "preco": 54.99,
+   "imagem": "",
+   "link": "https://s.shopee.com.br/1W0Zg4DTs2"
+  }
+ ]
+}
