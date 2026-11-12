@@ -1,6 +1,13 @@
 {
- "atualizado": "2026-11-11T12:03:00.917-03:00",
+ "atualizado": "2026-11-12T16:05:48.083-03:00",
  "produtos": [
+  {
+   "video": "Você vê rostos em tudo? A ciência explica o porquê!",
+   "nome": "Produto do video",
+   "preco": 0,
+   "imagem": "",
+   "link": "https://s.shopee.com.br/6fio4qRngc"
+  },
   {
    "video": "A falácia do apostador: por que você não tem mais sorte que ninguém?",
    "nome": "Os Números Governam Sua Vida: A Influência Velada das Probabilidades e da Estatística e...",
