@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Connecting TikTok</title><link rel="stylesheet" href="estilo.css"></head><body>
+<header><div style="font-size:30px">🔎</div><div><b>Curiosidário Postagem</b><span>Private publishing panel for the Curiosidário channel</span></div></header>
+<main><div class="card"><h1 id="titulo">Connecting your TikTok account...</h1><div class="creator hidden" id="conta"><img id="avatar" alt=""><b id="nome"></b></div><div id="msg"></div><p style="margin-top:16px"><a class="btn btn-main hidden" id="voltar" href="https://curiosidario2l1n.github.io/tiktok/">Go to publishing panel</a></p></div></main>
+<script>
+const API = 'https://reflex-poach-trickle.ngrok-free.dev/webhook/';
+const $ = (id) => document.getElementById(id);
+function msg(t, txt) { $('msg').innerHTML = '<div class="msg ' + t + '">' + txt + '</div>'; }
+(async () => {
+  const q = new URLSearchParams(location.search);
+  const code = q.get('code'); const st = q.get('state');
+  let salvo = null; try { salvo = localStorage.getItem('tt_state'); } catch (e) {}
+  if (q.get('error')) { $('titulo').textContent = 'Authorization cancelled'; msg('err', q.get('error_description') || q.get('error')); $('voltar').classList.remove('hidden'); return; }
+  if (!code) { $('titulo').textContent = 'Missing authorization code'; $('voltar').classList.remove('hidden'); return; }
+  if (salvo && st !== salvo) { $('titulo').textContent = 'Security check failed'; msg('err', 'Please start the connection again.'); $('voltar').classList.remove('hidden'); return; }
+  try {
+    const r = await fetch(API + 'tiktok-conectar?code=' + encodeURIComponent(code), { headers: { 'ngrok-skip-browser-warning': '1' } });
+    const d = await r.json();
+    if (d.ok) { $('titulo').textContent = 'TikTok account connected'; $('conta').classList.remove('hidden'); $('avatar').src = d.avatar || ''; $('nome').textContent = d.nome || ''; msg('ok', 'Curiosidário Postagem can now publish videos to this account.'); }
+    else { $('titulo').textContent = 'Connection failed'; msg('err', d.erro || 'Unknown error'); }
+  } catch (e) { $('titulo').textContent = 'Connection failed'; msg('err', 'Could not reach the publishing service.'); }
+  $('voltar').classList.remove('hidden');
+})();
+</script></body></html>
