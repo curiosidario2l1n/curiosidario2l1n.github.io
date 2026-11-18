@@ -1,0 +1,87 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Curiosidário Postagem</title><link rel="stylesheet" href="estilo.css"></head><body>
+<header><div style="font-size:30px">🔎</div><div><b>Curiosidário Postagem</b><span>Private publishing panel for the Curiosidário channel</span></div></header>
+<main>
+<div class="card" id="boxConectar">
+<h1>Connect your TikTok account</h1>
+<p class="muted">This private tool publishes the Curiosidário channel's own daily curiosity video to its own TikTok account. Log in with TikTok to authorize it.</p>
+<button class="btn btn-tt" id="btnConectar">Continue with TikTok</button>
+<div id="msgConectar"></div>
+</div>
+<div class="hidden" id="boxPainel">
+<div class="card"><h2>Connected account</h2><div class="creator"><img id="avatar" alt=""><div><b id="nick"></b><div class="muted" id="user"></div></div></div></div>
+<div class="card"><h2>Today's video</h2><video id="video" controls playsinline></video><p class="muted" id="infoVideo">Loading video preview...</p></div>
+<div class="card"><h2>Post to TikTok</h2>
+<label for="titulo">Caption</label><textarea id="titulo" rows="4" maxlength="2200" placeholder="Write the caption and hashtags"></textarea>
+<label for="privacidade">Who can view this video</label><select id="privacidade"><option value="" selected disabled>Select privacy</option></select>
+<label>Allow users to</label><div class="row"><span class="check"><input type="checkbox" id="comentar"><span>Comment</span></span><span class="check"><input type="checkbox" id="dueto"><span>Duet</span></span><span class="check"><input type="checkbox" id="stitch"><span>Stitch</span></span></div>
+<label class="check"><input type="checkbox" id="comercial"><span><b>Disclose commercial content</b></span></label>
+<div id="boxComercial" class="sub hidden"><span class="check"><input type="checkbox" id="marca"><span>Your brand: you are promoting yourself or your own business</span></span><span class="check"><input type="checkbox" id="patrocinado"><span>Branded content: you are promoting another brand or a third party</span></span><p class="muted" id="avisoComercial"></p></div>
+<p class="muted" id="consentimento">By posting, you agree to TikTok's <a href="https://www.tiktok.com/legal/page/global/music-usage-confirmation/en" target="_blank">Music Usage Confirmation</a>.</p>
+<button class="btn btn-main" id="btnPostar" disabled>Post to TikTok</button>
+<div id="msgPostar"></div>
+</div>
+</div>
+<footer><a href="https://curiosidario2l1n.github.io/terms.html">Terms of Service</a><a href="https://curiosidario2l1n.github.io/privacy.html">Privacy Policy</a></footer>
+</main>
+<script>
+const API = 'https://reflex-poach-trickle.ngrok-free.dev/webhook/';
+const CLIENT_KEY = 'sbawwyaaex0lcjsass';
+const REDIRECT = 'https://curiosidario2l1n.github.io/tiktok/callback.html';
+const H = { 'ngrok-skip-browser-warning': '1' };
+const $ = (id) => document.getElementById(id);
+let criador = null; let duracao = 0;
+function msg(el, tipo, txt) { $(el).innerHTML = '<div class="msg ' + tipo + '">' + txt + '</div>'; }
+const NOMES = { PUBLIC_TO_EVERYONE: 'Everyone', MUTUAL_FOLLOW_FRIENDS: 'Friends', FOLLOWER_OF_CREATOR: 'Followers', SELF_ONLY: 'Only me' };
+$('btnConectar').onclick = () => {
+  const st = Math.random().toString(36).slice(2) + Date.now().toString(36);
+  try { localStorage.setItem('tt_state', st); } catch (e) {}
+  const u = 'https://www.tiktok.com/v2/auth/authorize/?client_key=' + CLIENT_KEY + '&scope=user.info.basic,video.upload,video.publish&response_type=code&redirect_uri=' + encodeURIComponent(REDIRECT) + '&state=' + st;
+  location.href = u;
+};
+function validar() {
+  const p = $('privacidade').value; const com = $('comercial').checked; const marca = $('marca').checked; const pat = $('patrocinado').checked;
+  let ok = !!p; let aviso = '';
+  if (com && !marca && !pat) { ok = false; aviso = 'You need to indicate if your content promotes yourself, a third party, or both.'; }
+  const opcSelf = [...$('privacidade').options].find(o => o.value === 'SELF_ONLY');
+  if (opcSelf) opcSelf.disabled = com && pat;
+  if (com && pat && p === 'SELF_ONLY') { ok = false; aviso = 'Branded content visibility cannot be set to private.'; }
+  if (duracao && criador && criador.max_video_post_duration_sec && duracao > criador.max_video_post_duration_sec) { ok = false; aviso = 'This video is longer than the maximum duration allowed for this account.'; }
+  $('avisoComercial').textContent = aviso;
+  $('boxComercial').classList.toggle('hidden', !com);
+  const MU = '<a href="https://www.tiktok.com/legal/page/global/music-usage-confirmation/en" target="_blank">Music Usage Confirmation</a>';
+  const BC = '<a href="https://www.tiktok.com/legal/page/global/bc-policy/en" target="_blank">Branded Content Policy</a>';
+  let c = 'By posting, you agree to TikTok&#39;s ' + MU + '.';
+  if (com && pat) c = 'By posting, you agree to TikTok&#39;s ' + BC + ' and ' + MU + '.';
+  $('consentimento').innerHTML = c;
+  $('btnPostar').disabled = !ok;
+}
+['privacidade', 'comercial', 'marca', 'patrocinado'].forEach(id => $(id).addEventListener('change', validar));
+async function carregar() {
+  try {
+    const r = await fetch(API + 'tiktok-criador', { headers: H });
+    const d = await r.json();
+    if (!d.ok) return;
+    criador = d;
+    $('boxConectar').classList.add('hidden'); $('boxPainel').classList.remove('hidden');
+    $('avatar').src = d.creator_avatar_url || ''; $('nick').textContent = d.creator_nickname || ''; $('user').textContent = '@' + (d.creator_username || '');
+    (d.privacy_level_options || []).forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = NOMES[v] || v; $('privacidade').appendChild(o); });
+    [['comentar', d.comment_disabled], ['dueto', d.duet_disabled], ['stitch', d.stitch_disabled]].forEach(([id, off]) => { $(id).disabled = !!off; });
+    validar();
+    const v = await fetch(API + 'tiktok-video', { headers: H });
+    if (v.ok) { const b = await v.blob(); $('video').src = URL.createObjectURL(b); $('video').onloadedmetadata = () => { duracao = Math.round($('video').duration); $('infoVideo').textContent = 'Duration: ' + duracao + ' s. Maximum allowed for this account: ' + (d.max_video_post_duration_sec || '?') + ' s.'; validar(); }; }
+    else $('infoVideo').textContent = 'No video available for today yet.';
+  } catch (e) { msg('msgConectar', 'err', 'Could not reach the publishing service. Try again in a moment.'); }
+}
+$('btnPostar').onclick = async () => {
+  $('btnPostar').disabled = true;
+  msg('msgPostar', 'info', 'Uploading the video to TikTok. This can take up to a few minutes...');
+  try {
+    const corpo = { titulo: $('titulo').value, privacidade: $('privacidade').value, semComentario: !$('comentar').checked, semDueto: !$('dueto').checked, semStitch: !$('stitch').checked, marcaPropria: $('comercial').checked && $('marca').checked, conteudoPatrocinado: $('comercial').checked && $('patrocinado').checked };
+    const r = await fetch(API + 'tiktok-publicar', { method: 'POST', headers: Object.assign({ 'Content-Type': 'application/json' }, H), body: JSON.stringify(corpo) });
+    const d = await r.json();
+    if (d.ok) msg('msgPostar', 'ok', 'Posted. Your video was published to your TikTok profile. It may take a few minutes to appear.');
+    else { msg('msgPostar', 'err', 'TikTok did not accept the post: ' + (d.erro || d.status || 'unknown error')); $('btnPostar').disabled = false; }
+  } catch (e) { msg('msgPostar', 'err', 'Could not reach the publishing service.'); $('btnPostar').disabled = false; }
+};
+carregar();
+</script></body></html>
