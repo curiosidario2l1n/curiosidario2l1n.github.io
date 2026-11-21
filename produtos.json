@@ -1,131 +1,164 @@
 {
- "atualizado": "2026-11-20T12:00:00.560-03:00",
+ "atualizado": "2026-11-21T12:00:00.784-03:00",
  "produtos": [
+  {
+   "video": "A física por trás do ioiô",
+   "nome": "Ioiô Yo-Yo Profissional de Alumínio com Rolamento | Brinquedo Infantil para Manobras",
+   "preco": 16,
+   "imagem": "https://cf.shopee.com.br/file/br-11134207-820m7-mrq304wll5hgf8",
+   "link": "https://s.shopee.com.br/3qOqbGqmOP",
+   "links": {
+    "yt": "https://s.shopee.com.br/2gCtD7iR0D",
+    "ig": "https://s.shopee.com.br/7puzMcTEXd",
+    "tt": "https://s.shopee.com.br/gRopRuRpa",
+    "kw": "https://s.shopee.com.br/BVYEX0L2Q",
+    "tg": "https://s.shopee.com.br/BVYEX59Ne",
+    "site": "https://s.shopee.com.br/3qOqbGqmOP"
+   }
+  },
   {
    "video": "Por que sua pressão arterial muda igual ao trânsito?",
    "nome": "Monitor De Pressão Arterial De Pulso Recarregável Alta XYY-2551",
    "preco": 39.95,
    "imagem": "https://cf.shopee.com.br/file/br-11134207-7r98o-m94shi4qyr0902",
-   "link": "https://s.shopee.com.br/5fqTLubbNe"
+   "link": "https://s.shopee.com.br/5fqTLubbNe",
+   "links": {}
   },
   {
    "video": "Por que o farol do seu carro fica amarelo com o tempo?",
    "nome": "Revitalizador de farol remove amarelado e aspecto fosco",
    "preco": 16,
    "imagem": "https://cf.shopee.com.br/file/br-11134207-81z1k-mht87kjg5b7qd2",
-   "link": "https://s.shopee.com.br/W8LRDp6oM"
+   "link": "https://s.shopee.com.br/W8LRDp6oM",
+   "links": {}
   },
   {
    "video": "A tecnologia de 10 polegadas que protege sua visão",
    "nome": "1 Conjuntos Tela De Ampliacao 10 Polegadas Lente 3D Com Base Estavel Perfeita Para Ver ...",
    "preco": 16.99,
    "imagem": "https://cf.shopee.com.br/file/sg-11134201-8257s-mtc4bhi6xlaa4f",
-   "link": "https://s.shopee.com.br/8fU1ZL6F9D"
+   "link": "https://s.shopee.com.br/8fU1ZL6F9D",
+   "links": {}
   },
   {
    "video": "Percarbonato: a verdade sobre o poder do oxigênio ativo",
    "nome": "Percarbonato 100% Puro Tira Manchas Roupas Brancas e Coloridas",
    "preco": 16.49,
    "imagem": "https://cf.shopee.com.br/file/br-11134207-820lm-mqdb9tob0xdu3d",
-   "link": "https://s.shopee.com.br/1C1eWhGWX"
+   "link": "https://s.shopee.com.br/1C1eWhGWX",
+   "links": {}
   },
   {
    "video": "3 Fatos incríveis sobre seus potes de vidro!",
    "nome": "Kit Potes Mantimentos Vidro Herméticos Com Tampa Bambu Alta Resistência Epsilon Transpa...",
    "preco": 52.42,
    "imagem": "https://cf.shopee.com.br/file/br-11134207-820ld-mso4uf7pu0p11c",
-   "link": "https://s.shopee.com.br/6fitzt3pqu"
+   "link": "https://s.shopee.com.br/6fitzt3pqu",
+   "links": {}
   },
   {
    "video": "O segredo químico por trás do spray que repele líquidos",
    "nome": "Spray Impermeabilizante VedaTudo 400ml/235g Dryko",
    "preco": 23.67,
    "imagem": "https://cf.shopee.com.br/file/br-11134207-81z1k-miadbd439u6bc7",
-   "link": "https://s.shopee.com.br/6L620NnTkz"
+   "link": "https://s.shopee.com.br/6L620NnTkz",
+   "links": {}
   },
   {
    "video": "A origem secreta do seu guarda-chuva!",
    "nome": "Novo Guarda Chuva Automático Alta Resistência a Chuvas e Vento Forte Com Proteção UV",
    "preco": 26.99,
    "imagem": "https://cf.shopee.com.br/file/br-11134207-7r98o-md27szddhb8ye6",
-   "link": "https://s.shopee.com.br/7Af7P1Eemq"
+   "link": "https://s.shopee.com.br/7Af7P1Eemq",
+   "links": {}
   },
   {
    "video": "Banho e tempestade: cuidado redobrado",
    "nome": "Kit 3 Luminaria de emergencia 30 leds 2W Branco Frio",
    "preco": 39.9,
    "imagem": "https://cf.shopee.com.br/file/br-11134207-820mf-mu3sumfeuio007",
-   "link": "https://s.shopee.com.br/8pnJz1SYju"
+   "link": "https://s.shopee.com.br/8pnJz1SYju",
+   "links": {}
   },
   {
    "video": "Você vê rostos em tudo? A ciência explica o porquê!",
    "nome": "Produto do video",
    "preco": 0,
    "imagem": "",
-   "link": "https://s.shopee.com.br/6fio4qRngc"
+   "link": "https://s.shopee.com.br/6fio4qRngc",
+   "links": {}
   },
   {
    "video": "A falácia do apostador: por que você não tem mais sorte que ninguém?",
    "nome": "Os Números Governam Sua Vida: A Influência Velada das Probabilidades e da Estatística e...",
    "preco": 38.07,
    "imagem": "https://cf.shopee.com.br/file/sg-11134201-7rdxb-mdb4bqx2cz0u47",
-   "link": "https://s.shopee.com.br/1qdWSEaJH6"
+   "link": "https://s.shopee.com.br/1qdWSEaJH6",
+   "links": {}
   },
   {
    "video": "O segredo por trás do prazer em ver destruição nos jogos",
    "nome": "Blocos de Montar Magnéticos Construção Brinquedo Infantil",
    "preco": 135.99,
    "imagem": "",
-   "link": "https://s.shopee.com.br/9pfmUz3J6H"
+   "link": "https://s.shopee.com.br/9pfmUz3J6H",
+   "links": {}
   },
   {
    "video": "Como jogadores fazem a bola curvar?",
    "nome": "Bola de Futebol Topper  Campo Society Futsal Oficial Ultra Dupla Colagem",
    "preco": 73.9,
    "imagem": "",
-   "link": "https://s.shopee.com.br/906dpKEGhs"
+   "link": "https://s.shopee.com.br/906dpKEGhs",
+   "links": {}
   },
   {
    "video": "O limite biológico da velocidade",
    "nome": "Ciência criativa aprendizagem Metal dedo giroscópio descompressão clássico brinquedos educativos infantis * - * &",
    "preco": 38.58,
    "imagem": "",
-   "link": "https://s.shopee.com.br/2BGICYYuyp"
+   "link": "https://s.shopee.com.br/2BGICYYuyp",
+   "links": {}
   },
   {
    "video": "24 horas sem sono equivalem a um nível de embriaguez extrema",
    "nome": "Difusor De Aroma De Chama USB Umidificador De Ar Ultrassônico Criador De Névoa Fria LED Lâmpada Difusora De Óleo",
    "preco": 29.99,
    "imagem": "",
-   "link": "https://s.shopee.com.br/70LWEliL6T"
+   "link": "https://s.shopee.com.br/70LWEliL6T",
+   "links": {}
   },
   {
    "video": "85 litros por segundo: o poder dos pneus de chuva",
    "nome": "Miniatura de Fórmula 1 em metal 1:43",
    "preco": 17.63,
    "imagem": "",
-   "link": "https://s.shopee.com.br/6AmPEvOWhc"
+   "link": "https://s.shopee.com.br/6AmPEvOWhc",
+   "links": {}
   },
   {
    "video": "O motivo científico pelo qual o tempo voa na vida adulta",
    "nome": "Ampulheta decorativa de vidro (5 minutos)",
    "preco": 29.99,
    "imagem": "",
-   "link": "https://s.shopee.com.br/2Vt6s8zhCp"
+   "link": "https://s.shopee.com.br/2Vt6s8zhCp",
+   "links": {}
   },
   {
    "video": "Nuvens que parecem ondas gigantes: o fenômeno Kelvin-Helmholtz",
    "nome": "Projetor de céu estrelado astronauta",
    "preco": 35.99,
    "imagem": "",
-   "link": "https://s.shopee.com.br/5q9YqDs8YM"
+   "link": "https://s.shopee.com.br/5q9YqDs8YM",
+   "links": {}
   },
   {
    "video": "Como os jogos mudaram de cartuchos para mundos em 4K?",
    "nome": "Mini game retrô portátil com 400 jogos",
    "preco": 54.99,
    "imagem": "",
-   "link": "https://s.shopee.com.br/1W0Zg4DTs2"
+   "link": "https://s.shopee.com.br/1W0Zg4DTs2",
+   "links": {}
   }
  ]
 }
