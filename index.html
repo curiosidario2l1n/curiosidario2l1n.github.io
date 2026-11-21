@@ -72,6 +72,9 @@ h2 .pino{width:8px;height:8px;border-radius:50%;background:var(--acento)}
 <script>
 (function(){
   var alvo = document.getElementById('produtos');
+  var de = 'site';
+  try { var q = new URLSearchParams(location.search).get('de'); if (q && /^(yt|ig|tt|kw|tg)$/.test(q)) de = q; } catch (e) {}
+  function lk(p){return (p.links && p.links[de]) || p.link;}
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
   function preco(p){var n=Number(p);return isFinite(n)&&n>0?'R$ '+n.toFixed(2).replace('.',','):'';}
   function foto(p,alt){return p.imagem?'<img src="'+esc(p.imagem)+'" alt="'+(alt?esc(p.nome):'')+'" loading="lazy">':'<div class="ph" aria-hidden="true">🛍️</div>';}
@@ -81,11 +84,11 @@ h2 .pino{width:8px;height:8px;border-radius:50%;background:var(--acento)}
     if(!lista.length){vazio();return;}
     var h=lista[0], html='';
     html+='<h2><span class="pino"></span>Produto do vídeo de hoje</h2>';
-    html+='<a class="destaque" href="'+esc(h.link)+'" target="_blank" rel="noopener sponsored">'+foto(h,true)+'<div class="info"><div class="video">'+esc(h.video)+'</div><div class="nome">'+esc(h.nome)+'</div><div class="linha"><span class="preco">'+preco(h.preco)+'</span><span class="botao">Ver na Shopee</span></div></div></a>';
+    html+='<a class="destaque" href="'+esc(lk(h))+'" target="_blank" rel="noopener sponsored">'+foto(h,true)+'<div class="info"><div class="video">'+esc(h.video)+'</div><div class="nome">'+esc(h.nome)+'</div><div class="linha"><span class="preco">'+preco(h.preco)+'</span><span class="botao">Ver na Shopee</span></div></div></a>';
     if(lista.length>1){
       html+='<h2><span class="pino"></span>Produtos dos vídeos anteriores</h2><div class="lista">';
       lista.slice(1,30).forEach(function(p){
-        html+='<a class="item" href="'+esc(p.link)+'" target="_blank" rel="noopener sponsored">'+foto(p,false)+'<div class="t"><div class="video">'+esc(p.video)+'</div><div class="nome">'+esc(p.nome)+'</div><div class="preco">'+preco(p.preco)+'</div></div><span class="seta">›</span></a>';
+        html+='<a class="item" href="'+esc(lk(p))+'" target="_blank" rel="noopener sponsored">'+foto(p,false)+'<div class="t"><div class="video">'+esc(p.video)+'</div><div class="nome">'+esc(p.nome)+'</div><div class="preco">'+preco(p.preco)+'</div></div><span class="seta">›</span></a>';
       });
       html+='</div>';
     }
